@@ -1,0 +1,13 @@
+version: '3'
+services:
+  router:
+    build: './router.ctf'
+    hostname: 'insecureofthings'
+    ports:
+      - "8008:80"
+
+  dev:
+    build: './dev.ctf'
+    hostname: 'windows95'
+    ports:
+      - "2222:22"

@@ -1,0 +1,23 @@
+#!/bin/sh
+echo "Content-type: text/html"
+echo ""
+echo $(cat << EOF
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/static/entireframework.min.css" />
+    </head>
+    <body>
+        <h2>Interface Information</h2>
+        <form action="/cgi-bin/interface-info" method="post">
+            <label for=interface">Interface:</label><br>
+            <input type="text" id="interface" name="interface"><br>
+        </form>
+        <pre>
+EOF
+)
+read QUERY_STRING
+eval $(echo "$QUERY_STRING"|awk -F'&' '{for(i=1;i<=NF;i++){print $i}}')
+tmp=`httpd -d $interface`
+echo "Inteface Details:"
+eval ifconfig $tmp
+echo "</pre></body></html>"
