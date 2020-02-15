@@ -1,0 +1,60 @@
+ 1 -> hex decode
+2 -> view source, leads to router
+3 -> command injection
+4 -> linux fu to find sensitive data
+5 -> ssh, maybe a restricted shell breakout
+6 -> root via sudo trick
+7 -> get script running as cronjob with creds to redis or a mysql db?
+8 -> login to db, find creds to a common app (hashed, etc)
+9 -> crack hash
+10 -> use creds to login to app
+11 -> get code exec?
+12 -> find the flag
+
+> ctf.covhack.org
+just html page with comment in source to vpn server
+
+router.ctf.covhack.org
+> emulate router with command injection bug
+
+admin:c0vh4ck
+
+find it's running as a normal user, with a .ssh host files to another box.
+
+> dev.ctf.covhack.org
+> devs machine, 
+> james@window95 | ilovejs
+
+db.ctf.covhack.org
+> Mysql instance, creds leaked by a script only readable by root on dev.ctf
+
+admin.ctf.covhack.org
+> login with creds obtained from db.ctf
+> Has the flag!
+
+
+Howdy Friendos!
+
+This is small CTF we have going as a side event!
+
+How it works:
+* Send @Beowulf the flags as you get them! Lets me track who got what, etc.
+* There is a small prize! You'll get it in the closing ceromony!
+* Challenges are setup like a small network, with 4 machines. Go one by one and compromise them all! They'll lead to each other.
+* All linux machines and there is no need to use any public exploits! I've provided the tools you'd need on the machines to simplify things.
+* Play nice and don't mess with the challenges! I can respawn everything if something breaks.
+* I did firewall the boxes so that they can't talk on the internet!
+
+Check your lanyard for all the information you need to get started
+
+Docker host: up
+
+-rw-r--r-- 1 james james  220 Feb 14 16:44 .bash_logout
+-rw-r--r-- 1 james james 3771 Feb 14 16:44 .bashrc
+-rw-r--r-- 1 james james  807 Feb 14 16:44 .profile
+
+
+router.ctf: CH{injecting_commands_like_packets}
+dev.ctf: CH{i_sed_i_was_root}
+db.ctf: CH{select_wildcard_from_flags}
+admin.ctf: CH{flawless_victory}
